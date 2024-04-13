@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+</head>
+<body>
+
+<h2>Weather Information</h2>
+
+
+    <div th:if="${weather}">
+        <p>City: <span th:text="${weather.name}"></span></p>
+        <p>Description: <span th:text="${weather.weather[0].description}"></span></p>
+        <p>Temperature: <span th:text="${weather.main.temp}"></span> &deg;C</p>
+        <p>Feels Like: <span th:text="${weather.main.temp}"></span> &deg;C</p>
+        <p>Minimum Temperature: <span th:text="${weather.main.temp_min}"></span> &deg;C</p>
+        <p>Maximum Temperature: <span th:text="${weather.main.temp_max}"></span> &deg;C</p>
+        <p>Pressure: <span th:text="${weather.main.getPressureAtm()}"></span>atm</p>
+        <p>Humidity: <span th:text="${weather.main.humidity}"></span>%</p>
+        <p>Wind Speed: <span th:text="${weather.wind.speed}"></span>km/h</p>
+        <p>Wind direction: <span th:text="${weather.wind.deg}"></span>&deg;</p>
+        <!-- Access other nested properties as needed -->
+    </div>
+
+
+
+<div th:unless="${weather}">
+    <p>No weather information available for the specified city.</p>
+</div>
+
+</body>
+</html>
